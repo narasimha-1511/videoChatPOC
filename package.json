@@ -6,7 +6,7 @@
   "scripts": {
     "in": "npm install --prefix client && npm install --prefix server",
     "server": "node server/index.js",
-    "client": "npm run build --prefix client"
+    "client": "npm run in && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
