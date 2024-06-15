@@ -5,7 +5,6 @@ const cors = require("cors");
 
 const io = new Server(server, {
   path: "/socket",
-  wssEngine: ["ws", "wss"],
   transports: ["websocket", "polling"],
   cors: {
     origin: "*",
