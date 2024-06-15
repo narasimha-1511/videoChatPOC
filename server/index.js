@@ -2,7 +2,7 @@ const { Server} = require('socket.io');
 
 const io = new Server(5000, {
   cors: {
-    origin: "https://video-chat-poc-1xor.vercel.app/",
+    origin: "https://video-chat-poc-1xor.vercel.app",
   },
 });
 
