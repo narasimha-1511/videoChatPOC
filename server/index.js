@@ -17,7 +17,7 @@ const io = new Server(server, {
 
 app.use(cors());
 
-app.get("/", express.static(path.join(__dirname, "client/build")));
+app.get("/", express.static(path.join(__dirname, "../client/build")));
 
 
 const emailToSocketIdMap = new Map();
