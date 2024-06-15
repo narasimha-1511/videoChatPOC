@@ -4,13 +4,23 @@ const server = require("http").createServer(app);
 const cors = require("cors");
 
 const io = new Server(server, {
+  path: "/socket",
+  wsEngine: ["ws", "wss"],
+  transports: ["websocket", "polling"],
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
   },
+  allowEIO3: true,
 });
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
+
 app.use(cors());
+
 
 const emailToSocketIdMap = new Map();
 const socketIdToEmailMap = new Map();
