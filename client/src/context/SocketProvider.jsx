@@ -8,7 +8,7 @@ const SocketContext = createContext(null);
 export const SocketProvider = ({ children }) => {
   const socket = useMemo(
     () =>
-      io("https://video-chat-poc-nu.vercel.app", {
+      io("http://localhost:5000", {
         path: "/socket",
         transports: ["websocket", "polling"],
         reconnection: true,

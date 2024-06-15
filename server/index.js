@@ -1,7 +1,9 @@
 const { Server } = require("socket.io");
 const app = require("express")();
+const express = require("express");
 const server = require("http").createServer(app);
 const cors = require("cors");
+const path = require("path");
 
 const io = new Server(server, {
   path: "/socket",
@@ -13,12 +15,9 @@ const io = new Server(server, {
   allowEIO3: true,
 });
 
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true,
-};
-
 app.use(cors());
+
+app.get("/", express.static(path.join(__dirname, "client/build")));
 
 
 const emailToSocketIdMap = new Map();
