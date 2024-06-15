@@ -1,6 +1,5 @@
-const { Server} = require('socket.io');
-const app = require("express")();
-const server = require("http").createServer(app);
+const { Server } = require("socket.io");
+const server = require("http").createServer();
 
 const io = new Server(server, {
   cors: {
@@ -56,6 +55,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => {
+server.listen(5000, () => {
   console.log("listening on *:3001");
 });
