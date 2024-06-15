@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "in": "npm install --prefix client && npm install --prefix server",
+    "in": "npm install --prefix server/client && npm install --prefix server",
     "server": "node server/index.js",
-    "client": "npm run in && npm run build --prefix client"
+    "client": "npm run in && npm run build --prefix server/client"
   },
   "keywords": [],
   "author": "",
