@@ -8,7 +8,7 @@ const SocketContext = createContext(null);
 export const SocketProvider = ({ children }) => {
   const socket = useMemo(
     () =>
-      io("http://localhost:5000", {
+      io("https://videochatpoc.onrender.com", {
         path: "/socket",
         transports: ["websocket", "polling"],
         reconnection: true,

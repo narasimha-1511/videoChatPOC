@@ -15,6 +15,7 @@ const io = new Server(server, {
   allowEIO3: true,
 });
 
+
 app.use(cors());
 
 app.use(Express.static(path.join(path.resolve(), "server/client/dist")));
