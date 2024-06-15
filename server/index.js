@@ -4,6 +4,9 @@ const server = require("http").createServer();
 const io = new Server(server, {
   cors: {
     origin: "https://video-chat-poc-1xor.vercel.app",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-type"],
+    credentials: true,
   },
 });
 
