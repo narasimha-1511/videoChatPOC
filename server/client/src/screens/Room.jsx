@@ -131,9 +131,19 @@ const Room = () => {
   }, [remoteSocketId, socket]);
 
   const handleLeaveRoom = useCallback(() => {
-    setRemoteStream(null);
-    setMyStream(null);
+    //stop all the tracks
+    if (myStream) {
+      myStream.getTracks().forEach((track) => track.stop());
+    }
+
+    //close the peer connection
     peer.peer.close();
+
+    setFriend(null);
+    setRemoteSocketId(null);
+    setMyStream(null);
+    setRemoteStream(null);
+
     navigate(-1);
   }, [navigate]);
 
