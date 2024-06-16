@@ -130,6 +130,13 @@ const Room = () => {
     setMyStream(stream);
   }, [remoteSocketId, socket]);
 
+  const handleLeaveRoom = useCallback(() => {
+    setRemoteStream(null);
+    setMyStream(null);
+    peer.peer.close();
+    navigate(-1);
+  }, [navigate]);
+
   return (
     <div>
       <h1>Room </h1>
@@ -155,7 +162,7 @@ const Room = () => {
         )}
       </div>
       <div>
-        <button onClick={() => navigate(-1)}>Leave Room</button>
+        <button onClick={handleLeaveRoom}>Leave Room</button>
       </div>
     </div>
   );
