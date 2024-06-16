@@ -37,7 +37,7 @@ const LobbyScreen = () => {
       <div>
         <form className="formInput" onSubmit={handleSubmit}>
           <div className="item">
-            <label htmlFor="email"> Email ID</label>
+            <label htmlFor="email"> Name</label>
             <input
               type="name"
               id="email"

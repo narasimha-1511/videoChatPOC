@@ -2,15 +2,19 @@ import React, { useCallback, useEffect, useState } from "react";
 import { SocketProvider, useSocket } from "../context/SocketProvider";
 import ReactPlayer from "react-player";
 import peer from "../service/peer";
+import { useNavigate } from "react-router-dom";
 
 const Room = () => {
   const socket = useSocket();
   const [remoteSocketId, setRemoteSocketId] = useState(null);
+  const [friend, setFriend] = useState(null);
   const [myStream, setMyStream] = useState(null);
   const [remoteStream, setRemoteStream] = useState(null);
+  const navigate = useNavigate();
 
   const handleUserJoined = ({ email, id }) => {
     console.log("user joined", email, id);
+    setFriend(email);
     setRemoteSocketId(id);
   };
 
@@ -132,13 +136,15 @@ const Room = () => {
       <h3>
         {" "}
         {remoteSocketId
-          ? "You are connected"
+          ? `You are connected to : ${friend}`
           : "No One in This room , Invite your Friends"}
       </h3>
       {remoteSocketId && (
         <button onClick={hanldeCallUser}> Start Video Call</button>
       )}
-      {remoteSocketId && <button onClick={sendStreams}> Send Streams</button>}
+      {remoteSocketId && (
+        <button onClick={sendStreams}>Accept Video Call</button>
+      )}
       {myStream ? <h1> Video Call Started</h1> : ""}
       <div className="videos">
         {myStream && (
@@ -147,6 +153,9 @@ const Room = () => {
         {remoteStream && (
           <ReactPlayer className="videoPlayer" url={remoteStream} playing />
         )}
+      </div>
+      <div>
+        <button onClick={() => navigate(-1)}>Leave Room</button>
       </div>
     </div>
   );
